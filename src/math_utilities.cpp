@@ -1,6 +1,12 @@
 #include "math_utilities.h"
 
-bool MathUtilities::StatusIsOK()
+int MathUtilities::Factorial(int n)
 {
-	return true;
+	int result = 1;
+	for (int i = n; i > 1; --i)
+	{
+		result *= i;
+	}
+
+	return result;
 }

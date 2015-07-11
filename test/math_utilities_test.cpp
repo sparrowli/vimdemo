@@ -9,6 +9,14 @@ protected:
 	MathUtilities m_;
 };
 
-TEST_F(MathUtilitiesTest, InitializesCorrectly) {
-	EXPECT_TRUE(m_.StatusIsOK());
+TEST_F(MathUtilitiesTest, WhenNegativeReturnOne) {
+	EXPECT_EQ(1, m_.Factorial(-5));
+}
+
+TEST_F(MathUtilitiesTest, WhenZeroReturnOne) {
+	EXPECT_EQ(1, m_.Factorial(0));
+}
+
+TEST_F(MathUtilitiesTest, WhenPositiveReturnExpected) {
+	EXPECT_EQ(40320, m_.Factorial(8));
 }

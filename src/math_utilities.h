@@ -4,6 +4,6 @@
 class MathUtilities
 {
 public:
-	bool StatusIsOK(); 
+	int Factorial(int n);
 };
 #endif // _MATH_UTILITIES_H_
