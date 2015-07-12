@@ -9,13 +9,13 @@ EXECUTABLE_APP = $(VIM_DEMO)/bin
 all : $(TESTS)
 
 clean :
-	rm -rf $(EXECUTABLE_APP)/* $(MEDIAN_DIR)/*.o
+	rm -rf $(EXECUTABLE_APP)/* $(MEDIAN_DIR)/*.o *.o
 
-math_utilities.o : 
-	$(CXX) -c $(SRC_DIR)/*.cpp -o $(MEDIAN_DIR)/$@
+build_src : 
+	$(CXX) -c $(SRC_DIR)/*.cpp 
 
-math_utilities_test.o :
-	$(CXX) -Isrc -I. -c $(TEST_DIR)/*.cpp -o $(MEDIAN_DIR)/$@
+build_test :
+	$(CXX) -Isrc -I. -c $(TEST_DIR)/*.cpp 
 
-math_unittest : math_utilities.o math_utilities_test.o 
-	$(CXX) -pthread $(MEDIAN_DIR)/*.o $(LIB_DIR)/*.a -o $(EXECUTABLE_APP)/$@
+math_unittest : build_src build_test
+	$(CXX) -pthread $(VIM_DEMO)/*.o $(LIB_DIR)/*.a -o $(EXECUTABLE_APP)/$@
