@@ -1,3 +1,4 @@
 bin
 median
 **/*.swp
+*.o
