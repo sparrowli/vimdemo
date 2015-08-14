@@ -11,11 +11,11 @@ all : $(TESTS)
 clean :
 	rm -rf $(EXECUTABLE_APP)/* $(MEDIAN_DIR)/*.o *.o
 
-build_src : 
-	$(CXX) -c $(SRC_DIR)/*.cpp $(SRC_DIR)/sparrow_queue.h
+$(MEDIAN_DIR)/%.o : $(SRC_DIR)/%.cpp 
+	$(CXX) -c $< -o $@
 
-build_test :
-	$(CXX) -Isrc -I. -c $(TEST_DIR)/*.cpp 
+$(MEDIAN_DIR)/%.o : $(TEST_DIR)/%.cpp
+	$(CXX) -Isrc -I. -c $< -o $@
 
-math_unittest : build_src build_test
-	$(CXX) -pthread $(VIM_DEMO)/*.o $(LIB_DIR)/*.a -o $(EXECUTABLE_APP)/$@
+math_unittest : $(MEDIAN_DIR)/%.o
+	$(CXX) -pthread $(MEDIAN_DIR)/*.o $(LIB_DIR)/*.a -o $(EXECUTABLE_APP)/$@

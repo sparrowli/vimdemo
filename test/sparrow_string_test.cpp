@@ -1,5 +1,5 @@
-#include "sparrow_string.h"
 #include "gtest/gtest.h"
+#include "sparrow_string.h"
 
 TEST(SparrowString, DefaultConstructor) {
 	const SparrowString ss;
